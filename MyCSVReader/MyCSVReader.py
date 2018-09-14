@@ -11,10 +11,13 @@ if arg_cnt == 2:
      file = sys.argv[1]
 
 while True:
-    if file != '':
-        file = input("File not matches to '.csv'! Please enter full path to file: ")  
-    elif arg_cnt == 1:
-        file = input("File not selected. Please enter full path to file: ") 
+    if arg_cnt == 1 and file == '':
+        file = input("File not selected. Please enter full path to file: ")
+    elif file != '' and file[-4:] != '.csv':
+        file = input("File not matches to '.csv' or don't exist! Please enter full path to file: ")
+    else:
+        file = input("Wrong path! Please enter full path to file: ")
+     
     if Path(file).is_file():
         break
     
